@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import DotField from '../components/DotField.astro';
 
 // TODO(P2)：這段定位文字是草稿，請改成你自己的說法
 const tagline = '校園網路維運 × K12 資訊教育';
@@ -26,18 +27,22 @@ const tracks = [
 ---
 
 <Layout title="蛋糕 Cake">
-  <section class="mb-14">
-    <p
-      class="mb-5 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700"
-    >
-      Cake
-    </p>
+  {/* isolate 建立堆疊脈絡，讓點陣 canvas 的 -z-10 只退到本區塊底層，不會跑到 body 後面。
+      -mx-6 px-6 讓點陣延伸到左右留白，視覺上比切齊內容寬度更開闊。 */}
+  <section class="relative isolate -mx-6 mb-14 px-6 py-12 sm:py-16">
+    <DotField />
 
-    <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">蛋糕</h1>
+    <div class="relative">
+      <p class="mb-5 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700">
+        Cake
+      </p>
 
-    <p class="mb-3 text-lg font-medium sm:text-xl">{tagline}</p>
+      <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">蛋糕</h1>
 
-    <p class="max-w-prose text-muted">{intro}</p>
+      <p class="mb-3 text-lg font-medium sm:text-xl">{tagline}</p>
+
+      <p class="max-w-prose text-muted">{intro}</p>
+    </div>
   </section>
 
   <section aria-labelledby="tracks-heading">
