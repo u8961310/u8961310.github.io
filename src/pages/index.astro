@@ -3,16 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 
 // TODO(P2)：這段定位文字是草稿，請改成你自己的說法
-const tagline = '校園網路維運 × 國小資訊教育';
+const tagline = '校園網路維運 × K12 資訊教育';
 const intro =
-  '在大學管網路與系統，也替國小孩子做資訊課教材。用工程的方法做教學的事，也用教學的角度寫程式。';
+  '在大學管網路與系統，也替 K12 的孩子做資訊課教材。用工程的方法做教學的事，也用教學的角度寫程式。';
 
 const tracks = [
   {
     href: '/teaching',
     icon: 'academic-cap' as const,
     label: '教學',
-    desc: '國小資訊課教材、互動遊戲、教學理念',
+    desc: 'K12 資訊課教材、互動遊戲、教學理念',
     meta: '21 個互動單元已上線',
   },
   {
@@ -25,44 +25,40 @@ const tracks = [
 ];
 ---
 
-<Layout title="陳冠廷（蛋糕）">
-  <section class="mb-16 sm:mb-20">
+<Layout title="蛋糕 Cake">
+  <section class="mb-14">
     <p
-      class="mb-5 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700 dark:text-brand-500"
+      class="mb-5 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700"
     >
-      Cake Chen
+      Cake
     </p>
 
-    <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">陳冠廷</h1>
+    <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">蛋糕</h1>
 
-    <p class="mb-3 text-lg font-medium text-stone-700 sm:text-xl dark:text-stone-200">
-      {tagline}
-    </p>
+    <p class="mb-3 text-lg font-medium sm:text-xl">{tagline}</p>
 
-    <p class="max-w-prose text-stone-600 dark:text-stone-400">{intro}</p>
+    <p class="max-w-prose text-muted">{intro}</p>
   </section>
 
   <section aria-labelledby="tracks-heading">
     <h2 id="tracks-heading" class="sr-only">主要內容分區</h2>
 
-    <div
-      class="grid gap-px overflow-hidden rounded-xl bg-stone-200 ring-1 ring-stone-200 sm:grid-cols-2 dark:bg-stone-800 dark:ring-stone-800"
-    >
+    <div class="grid gap-4 sm:grid-cols-2">
       {
         tracks.map((t) => (
           <a
             href={t.href}
-            class="group flex cursor-pointer flex-col bg-paper p-7 transition-colors duration-200 hover:bg-brand-50 focus-visible:bg-brand-50 dark:bg-stone-950 dark:hover:bg-stone-900 dark:focus-visible:bg-stone-900"
+            class="group flex cursor-pointer flex-col rounded-xl border border-line bg-surface p-7 shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-brand-500 hover:shadow-md focus-visible:border-brand-500"
           >
-            <span class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-stone-200 text-brand-700 transition-colors duration-200 group-hover:border-brand-200 group-hover:bg-white dark:border-stone-700 dark:text-brand-500 dark:group-hover:bg-stone-950">
+            <span class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-50 text-brand-700 transition-colors duration-200 group-hover:bg-brand-100 dark:bg-brand-500/10 dark:group-hover:bg-brand-500/20">
               <Icon name={t.icon} class="h-5 w-5" />
             </span>
 
             <h3 class="mb-1.5 text-lg font-bold">{t.label}</h3>
 
-            <p class="mb-6 text-sm text-stone-600 dark:text-stone-400">{t.desc}</p>
+            <p class="mb-6 text-sm text-muted">{t.desc}</p>
 
-            <span class="mt-auto inline-flex items-center gap-2 text-xs font-medium text-stone-500 transition-colors duration-200 group-hover:text-brand-700 dark:group-hover:text-brand-500">
+            <span class="mt-auto inline-flex items-center gap-2 text-xs font-medium text-muted transition-colors duration-200 group-hover:text-brand-700">
               {t.meta}
               <Icon
                 name="arrow-right"

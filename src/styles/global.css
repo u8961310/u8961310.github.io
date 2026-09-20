@@ -9,7 +9,6 @@
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 @theme {
-  /* 字體：拉丁字優先 Space Grotesk，中文自動 fallback 到 Noto Sans TC */
   --font-display: 'Space Grotesk', 'Noto Sans TC', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Noto Sans TC', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
@@ -22,9 +21,27 @@
   --color-brand-600: #0d9488;
   --color-brand-700: #0f766e;
 
-  /* 中性階：暖灰（stone）比純灰更耐看，避免死板 */
-  --color-ink: #0c0a09;
-  --color-paper: #fafaf9;
+  /* ── 語意化色票 ──
+     canvas = 頁面底色，surface = 卡片／header／footer 等「浮起來」的面。
+     兩者必須有可見色差，否則區塊會糊在一起（這是初版最大的問題）。
+     深色模式在下方 [data-theme='dark'] 直接覆寫同名變數，
+     所以元件端只要寫 bg-canvas / bg-surface，不需要再掛 dark: 類別。 */
+  --color-canvas: #eef2f1;
+  --color-surface: #ffffff;
+  --color-line: #d8e2df;
+  --color-ink: #101d1b;
+  --color-muted: #5a6b67;
+}
+
+[data-theme='dark'] {
+  --color-canvas: #0a0f0e;
+  --color-surface: #121a19;
+  --color-line: #24302e;
+  --color-ink: #eef2f1;
+  --color-muted: #93a5a0;
+
+  /* 暗底上 teal 要提亮才看得清楚 */
+  --color-brand-700: #2dd4bf;
 }
 
 html {
@@ -36,19 +53,29 @@ body {
   font-family: var(--font-sans);
   /* 中文行距放寬，長段落才好讀 */
   line-height: 1.75;
-  /* 清新感的來源之一：極淡的 teal 暈染，只在頁面頂端，不干擾內容 */
-  background-image: radial-gradient(
-    60rem 28rem at 50% -14rem,
-    color-mix(in oklab, var(--color-brand-200) 42%, transparent),
-    transparent
-  );
-  background-repeat: no-repeat;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
 }
 
-[data-theme='dark'] body {
-  background-image: radial-gradient(
-    60rem 28rem at 50% -14rem,
-    color-mix(in oklab, var(--color-brand-700) 26%, transparent),
+/* 清新感的視覺錨點：頁面頂端極淡的 teal 暈染 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 26rem;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    60rem 22rem at 50% -8rem,
+    color-mix(in oklab, var(--color-brand-500) 16%, transparent),
+    transparent
+  );
+}
+
+[data-theme='dark'] body::before {
+  background: radial-gradient(
+    60rem 22rem at 50% -8rem,
+    color-mix(in oklab, var(--color-brand-500) 12%, transparent),
     transparent
   );
 }
@@ -61,7 +88,6 @@ body {
   color-scheme: dark;
 }
 
-/* 標題用 display 字體 + 收緊字距 */
 h1,
 h2,
 h3 {
