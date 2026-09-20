@@ -1,57 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 
 // TODO(P2)：這段定位文字是草稿，請改成你自己的說法
 const tagline = '校園網路維運 × 國小資訊教育';
-const intro = '用工程的方法做教學的事，也用教學的角度寫程式。';
+const intro =
+  '在大學管網路與系統，也替國小孩子做資訊課教材。用工程的方法做教學的事，也用教學的角度寫程式。';
 
 const tracks = [
   {
     href: '/teaching',
-    emoji: '🎮',
-    title: '教學',
+    icon: 'academic-cap' as const,
+    label: '教學',
     desc: '國小資訊課教材、互動遊戲、教學理念',
     meta: '21 個互動單元已上線',
-    accent: 'hover:border-teach-500',
   },
   {
     href: '/dev',
-    emoji: '⚙️',
-    title: '技術',
-    desc: '工具開發、自動化、校園系統整合',
+    icon: 'code-bracket' as const,
+    label: '技術',
+    desc: '工具開發、流程自動化、校園系統整合',
     meta: 'GitHub 公開專案',
-    accent: 'hover:border-dev-500',
   },
 ];
 ---
 
 <Layout title="陳冠廷（蛋糕）">
-  <section class="mb-14">
-    <h1 class="mb-3 text-3xl font-black tracking-tight sm:text-4xl">陳冠廷<span
-        class="ml-2 text-xl font-medium text-stone-400">蛋糕</span
-      ></h1>
-    <p class="text-lg font-medium text-stone-600 dark:text-stone-300">{tagline}</p>
-    <p class="mt-1 text-stone-500">{intro}</p>
+  <section class="mb-16 sm:mb-20">
+    <p
+      class="mb-5 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700 dark:text-brand-500"
+    >
+      Cake Chen
+    </p>
+
+    <h1 class="mb-5 text-4xl font-bold tracking-tight sm:text-5xl">陳冠廷</h1>
+
+    <p class="mb-3 text-lg font-medium text-stone-700 sm:text-xl dark:text-stone-200">
+      {tagline}
+    </p>
+
+    <p class="max-w-prose text-stone-600 dark:text-stone-400">{intro}</p>
   </section>
 
-  <section class="grid gap-4 sm:grid-cols-2">
-    {
-      tracks.map((t) => (
-        <a
-          href={t.href}
-          class:list={[
-            'group rounded-2xl border border-stone-200 bg-white p-6 transition',
-            'hover:-translate-y-0.5 hover:shadow-lg',
-            'dark:border-stone-800 dark:bg-stone-900',
-            t.accent,
-          ]}
-        >
-          <div class="mb-3 text-3xl">{t.emoji}</div>
-          <h2 class="mb-1 text-xl font-bold">{t.title}</h2>
-          <p class="text-sm text-stone-600 dark:text-stone-400">{t.desc}</p>
-          <p class="mt-4 text-xs font-medium text-stone-400">{t.meta} →</p>
-        </a>
-      ))
-    }
+  <section aria-labelledby="tracks-heading">
+    <h2 id="tracks-heading" class="sr-only">主要內容分區</h2>
+
+    <div
+      class="grid gap-px overflow-hidden rounded-xl bg-stone-200 ring-1 ring-stone-200 sm:grid-cols-2 dark:bg-stone-800 dark:ring-stone-800"
+    >
+      {
+        tracks.map((t) => (
+          <a
+            href={t.href}
+            class="group flex cursor-pointer flex-col bg-paper p-7 transition-colors duration-200 hover:bg-brand-50 focus-visible:bg-brand-50 dark:bg-stone-950 dark:hover:bg-stone-900 dark:focus-visible:bg-stone-900"
+          >
+            <span class="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-stone-200 text-brand-700 transition-colors duration-200 group-hover:border-brand-200 group-hover:bg-white dark:border-stone-700 dark:text-brand-500 dark:group-hover:bg-stone-950">
+              <Icon name={t.icon} class="h-5 w-5" />
+            </span>
+
+            <h3 class="mb-1.5 text-lg font-bold">{t.label}</h3>
+
+            <p class="mb-6 text-sm text-stone-600 dark:text-stone-400">{t.desc}</p>
+
+            <span class="mt-auto inline-flex items-center gap-2 text-xs font-medium text-stone-500 transition-colors duration-200 group-hover:text-brand-700 dark:group-hover:text-brand-500">
+              {t.meta}
+              <Icon
+                name="arrow-right"
+                class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none"
+              />
+            </span>
+          </a>
+        ))
+      }
+    </div>
   </section>
 </Layout>

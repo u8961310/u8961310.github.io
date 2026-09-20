@@ -1,18 +1,26 @@
 /* ⚠️ @import url() 必須排在所有規則之前（含 Tailwind），順序顛倒會被 CSS optimizer 警告並可能失效 */
-/* Noto Sans TC — 與 edtech-portfolio 一致，維持個人識別 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+/* Space Grotesk = 拉丁字顯示字體（專業帶個性）；Noto Sans TC = 中文與內文 */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
 @import 'tailwindcss';
 
 @theme {
-  --font-sans:
-    'Noto Sans TC', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* 字體：拉丁字優先 Space Grotesk，中文自動 fallback 到 Noto Sans TC */
+  --font-display: 'Space Grotesk', 'Noto Sans TC', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Noto Sans TC', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* 教學軌 / 技術軌 的識別色 */
-  --color-teach-500: oklch(0.72 0.16 55);
-  --color-teach-600: oklch(0.64 0.17 50);
-  --color-dev-500: oklch(0.66 0.15 245);
-  --color-dev-600: oklch(0.58 0.16 248);
+  /* 單一強調色：teal —— 專業而不沉悶，是「清新」的來源。
+     Swiss 風格講究 single accent，不要再加第二個搶眼色。 */
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+
+  /* 中性階：暖灰（stone）比純灰更耐看，避免死板 */
+  --color-ink: #0c0a09;
+  --color-paper: #fafaf9;
 }
 
 html {
@@ -24,9 +32,50 @@ body {
   font-family: var(--font-sans);
   /* 中文行距放寬，長段落才好讀 */
   line-height: 1.75;
+  /* 清新感的來源之一：極淡的 teal 暈染，只在頁面頂端，不干擾內容 */
+  background-image: radial-gradient(
+    60rem 28rem at 50% -14rem,
+    color-mix(in oklab, var(--color-brand-200) 42%, transparent),
+    transparent
+  );
+  background-repeat: no-repeat;
 }
 
-/* 中英數混排時給英文/數字一點呼吸空間 */
-:lang(en) {
-  letter-spacing: 0.01em;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: radial-gradient(
+      60rem 28rem at 50% -14rem,
+      color-mix(in oklab, var(--color-brand-700) 26%, transparent),
+      transparent
+    );
+  }
+}
+
+/* 標題用 display 字體 + 收緊字距 */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+/* 鍵盤操作必須看得見焦點（滑鼠點擊時不顯示，避免視覺噪音） */
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* 尊重系統的「減少動態」設定 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

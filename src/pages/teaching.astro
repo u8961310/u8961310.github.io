@@ -1,20 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout title="教學 — 陳冠廷（蛋糕）" description="國小資訊課教材、互動遊戲與教學理念">
-  <h1 class="mb-6 text-2xl font-black">教學</h1>
+  <header class="mb-12">
+    <p
+      class="mb-4 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700 dark:text-brand-500"
+    >
+      Teaching
+    </p>
+    <h1 class="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">教學</h1>
+    <p class="max-w-prose text-stone-600 dark:text-stone-400">
+      國小資訊課的互動教材與遊戲，以及背後的教學思考。
+    </p>
+  </header>
 
-  <div
-    class="rounded-2xl border border-dashed border-stone-300 p-8 text-center text-stone-500 dark:border-stone-700"
-  >
-    <p class="mb-4">P2 階段建置中</p>
-    <p class="text-sm">教學理念 · 21 個互動單元 · 遊戲化新作</p>
+  <div class="rounded-xl border border-stone-200 bg-white/60 p-8 dark:border-stone-800 dark:bg-stone-900/40">
+    <p class="mb-2 text-xs font-medium uppercase tracking-wider text-stone-400">建置中 · P2</p>
+    <p class="mb-6 text-stone-600 dark:text-stone-400">
+      教學理念 · 21 個互動單元 · 遊戲化新作
+    </p>
     <a
       href="https://u8961310.github.io/edtech-portfolio/"
-      class="mt-6 inline-block rounded-lg bg-teach-600 px-4 py-2 text-sm font-bold text-white transition hover:opacity-90"
+      rel="noopener"
+      class="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-700"
     >
-      先去看現有作品集 →
+      先去看現有作品集
+      <Icon name="arrow-right" class="h-4 w-4" />
     </a>
   </div>
 </Layout>
