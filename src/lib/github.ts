@@ -29,13 +29,30 @@ function normalize(raw: any): Repo {
   return {
     name: String(raw.name ?? ''),
     description: raw.description ?? null,
-    url: String(raw.url ?? raw.html_url ?? ''),
+    // ⚠️ GitHub API 物件裡的 `url` 是 API 端點（https://api.github.com/repos/...），
+    // 給人點的網頁網址是 `html_url`。順序寫反會讓所有連結指向 API。
+    // 快照檔存的是 html_url，兩者都吃得到。
+    url: String(raw.html_url ?? raw.url ?? ''),
     language: raw.language ?? null,
     stars: Number(raw.stars ?? raw.stargazers_count ?? 0),
     pushedAt: String(raw.pushedAt ?? raw.pushed_at ?? ''),
     fork: Boolean(raw.fork),
     archived: Boolean(raw.archived),
   };
+}
+
+/**
+ * 防呆：連結必須是給人點的 github.com 網頁，不能是 api.github.com 端點。
+ * 這個錯誤在畫面上看不出來（卡片照樣渲染、數量也對），只有真的點下去才會發現，
+ * 所以在 build 時就擋掉。
+ */
+function assertWebUrls(repos: Repo[]) {
+  const bad = repos.filter((r) => !r.url.startsWith('https://github.com/'));
+  if (bad.length > 0) {
+    throw new Error(
+      `${bad.length} 個 repo 的連結不是 github.com 網頁網址，第一筆：${bad[0].name} → ${bad[0].url}`
+    );
+  }
 }
 
 /**
@@ -62,15 +79,24 @@ export async function fetchRepos(): Promise<{ repos: Repo[]; source: 'api' | 'sn
     const json = await res.json();
     if (!Array.isArray(json) || json.length === 0) throw new Error('回應不是非空陣列');
 
+    const repos = json.map(normalize);
+    assertWebUrls(repos);
+
     console.log(`[github] 取得 ${json.length} 個 repo${token ? '（已帶 token）' : '（未帶 token）'}`);
-    return { repos: json.map(normalize), source: 'api' };
+    return { repos, source: 'api' };
   } catch (err) {
     console.warn(
       `[github] API 取用失敗，改用 src/data/repos-snapshot.json：${
         err instanceof Error ? err.message : String(err)
       }`
     );
-    return { repos: (snapshot as any[]).map(normalize), source: 'snapshot' };
+    // 快照這條路不能再拋錯（拋了就沒有退路了），壞掉的項目濾掉並留紀錄
+    const fromSnapshot = (snapshot as any[]).map(normalize);
+    const usable = fromSnapshot.filter((r) => r.url.startsWith('https://github.com/'));
+    if (usable.length !== fromSnapshot.length) {
+      console.warn(`[github] 快照有 ${fromSnapshot.length - usable.length} 筆連結格式不對，已略過`);
+    }
+    return { repos: usable, source: 'snapshot' };
   }
 }
 

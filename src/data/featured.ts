@@ -45,6 +45,11 @@ export const FEATURED: FeaturedEntry[] = [
     blurb:
       '指定時間區間把粉專影片整批下載到本機。bookmarklet 收清單 + 桌面程式下載，附非技術使用者說明書。',
   },
+  {
+    repo: 'book-craw',
+    title: '博客來新書爬蟲',
+    blurb: '定期抓博客來的最新書單，把要一頁頁翻的新書資訊整理成可直接瀏覽的清單。',
+  },
   // TODO：以下幾個 repo 沒有描述，確認用途後可補進精選
-  //   book-craw / SAMS / school-crm / student-roster-converter / line-bot-calendar
+  //   SAMS / school-crm / student-roster-converter / line-bot-calendar
 ];
