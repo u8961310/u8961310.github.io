@@ -4,6 +4,10 @@
 
 @import 'tailwindcss';
 
+/* dark variant 改看 <html data-theme="dark">，不再跟隨系統偏好。
+   預設一律亮色，由使用者用 header 的切換鈕決定（選擇存 localStorage）。 */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @theme {
   /* 字體：拉丁字優先 Space Grotesk，中文自動 fallback 到 Noto Sans TC */
   --font-display: 'Space Grotesk', 'Noto Sans TC', ui-sans-serif, system-ui, sans-serif;
@@ -41,14 +45,20 @@ body {
   background-repeat: no-repeat;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: radial-gradient(
-      60rem 28rem at 50% -14rem,
-      color-mix(in oklab, var(--color-brand-700) 26%, transparent),
-      transparent
-    );
-  }
+[data-theme='dark'] body {
+  background-image: radial-gradient(
+    60rem 28rem at 50% -14rem,
+    color-mix(in oklab, var(--color-brand-700) 26%, transparent),
+    transparent
+  );
+}
+
+/* 讓捲軸、表單控件等瀏覽器原生 UI 跟著主題走 */
+:root {
+  color-scheme: light;
+}
+[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 /* 標題用 display 字體 + 收緊字距 */
