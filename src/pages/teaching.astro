@@ -1,27 +1,120 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import { fetchUnits, groupByGrade, unitUrl, portfolioUrl } from '../lib/units';
+
+// build 時解析 edtech-portfolio 首頁；失敗自動回落快照（見 lib/units.ts）
+const { units, source } = await fetchUnits();
+const groups = groupByGrade(units);
+
+// 技能標籤去重，當作能力面向的摘要
+const skills = [...new Set(units.map((u) => u.skill).filter(Boolean))];
 ---
 
-<Layout title="教學 — 蛋糕 Cake" description="K12 資訊課教材、互動遊戲與教學理念">
-  <header class="mb-10">
+<Layout title="教學 — 蛋糕 Cake" description="K12 資訊課的互動教材與遊戲，以及背後的教學思考">
+  <header class="mb-12">
     <p class="mb-4 font-display text-xs font-medium uppercase tracking-[0.18em] text-brand-700">
       Teaching
     </p>
     <h1 class="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">教學</h1>
-    <p class="max-w-prose text-muted">K12 資訊課的互動教材與遊戲，以及背後的教學思考。</p>
+    <p class="max-w-prose text-muted">
+      給 K12 孩子的資訊課互動教材。純靜態、零安裝，教室電腦打開瀏覽器就能用。
+    </p>
+    <p class="mt-2 text-sm text-muted">
+      目前 {units.length} 個單元上線，清單於建置時直接讀 edtech-portfolio。
+    </p>
   </header>
 
-  <div class="rounded-xl border border-line bg-surface p-8 shadow-sm">
-    <p class="mb-2 text-xs font-medium uppercase tracking-wider text-muted">建置中 · P2</p>
-    <p class="mb-6">教學理念 · 21 個互動單元 · 遊戲化新作</p>
+  {/* ── 能力面向 ── */}
+  {
+    skills.length > 0 && (
+      <section class="mb-12">
+        <h2 class="mb-4 font-display text-xs font-medium uppercase tracking-[0.18em] text-muted">
+          涵蓋能力
+        </h2>
+        <ul class="flex flex-wrap gap-2">
+          {skills.map((s) => (
+            <li class="rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted">
+              {s}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {/* ── 依年級分組的單元 ── */}
+  {
+    groups.map(({ grade, units: list }) => (
+      <section class="mb-12">
+        <h2 class="mb-4 flex items-baseline gap-3 font-display text-xs font-medium uppercase tracking-[0.18em] text-muted">
+          {grade}
+          <span class="text-[0.7rem] font-normal normal-case tracking-normal">
+            {list.length} 個單元
+          </span>
+        </h2>
+
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {list.map((u) => (
+            <li>
+              <a
+                href={unitUrl(u.slug)}
+                rel="noopener"
+                class="group flex h-full gap-4 rounded-xl border border-line bg-surface p-4 shadow-sm transition-[border-color,box-shadow] duration-200 hover:shadow-md"
+                style={`--unit:${u.color}`}
+              >
+                <span
+                  aria-hidden="true"
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-xl"
+                  style={`background:color-mix(in oklab, ${u.color} 14%, transparent)`}
+                >
+                  {u.cover}
+                </span>
+
+                <span class="min-w-0 flex-1">
+                  <span class="mb-1 flex flex-wrap items-baseline gap-x-2">
+                    <span class="font-bold">{u.title}</span>
+                    {u.skill && (
+                      <span
+                        class="rounded px-1.5 py-0.5 text-[0.65rem] font-medium"
+                        style={`background:color-mix(in oklab, ${u.color} 16%, transparent); color:${u.color}`}
+                      >
+                        {u.skill}
+                      </span>
+                    )}
+                  </span>
+                  {u.desc && <span class="block text-xs leading-relaxed text-muted">{u.desc}</span>}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  {/* ── 導流 ── */}
+  <div class="rounded-xl border border-line bg-surface p-6 shadow-sm">
+    <p class="mb-4 text-sm text-muted">
+      完整作品集另有學生樂園入口與計分徽章，適合直接投影給學生用。
+    </p>
     <a
-      href="https://u8961310.github.io/edtech-portfolio/"
+      href={portfolioUrl}
       rel="noopener"
       class="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-700 dark:text-stone-950"
     >
-      先去看現有作品集
+      前往 edtech-portfolio
       <Icon name="arrow-right" class="h-4 w-4" />
     </a>
   </div>
+
+  {/* TODO(P2)：教學理念還沒寫，需要你自己的文字，我不代筆 */}
+
+  {
+    source === 'snapshot' && (
+      <p class="mt-8 text-xs text-muted">
+        （此清單來自建置時的快照，edtech-portfolio 當下解析失敗）
+      </p>
+    )
+  }
 </Layout>

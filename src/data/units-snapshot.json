@@ -1,0 +1,212 @@
+[
+  {
+    "slug": "unit1-typing-adventure",
+    "grade": "中年級",
+    "gradeClass": "gmid",
+    "title": "中文打字冒險王",
+    "desc": "邊打注音邊打怪！連擊越多分數越高，闖關完成可以拿到勇者證書。",
+    "skill": "注音打字",
+    "cover": "⚔️🐲",
+    "color": "#ef4444"
+  },
+  {
+    "slug": "unit2-mouse-adventure",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "小兔勇者大冒險",
+    "desc": "陪小兔勇者用滑鼠打敗森林壞蛋！學會點點、移動、拖拉、雙擊四種魔法。",
+    "skill": "滑鼠特訓",
+    "cover": "🐰⚔️",
+    "color": "#16a34a"
+  },
+  {
+    "slug": "unit3-space-typing",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "太空打字防衛戰",
+    "desc": "外星人從天上飛下來啦！按出英文字母擊落他們，保衛我們的地球！",
+    "skill": "英文打字",
+    "cover": "🛸🌍",
+    "color": "#9333ea"
+  },
+  {
+    "slug": "unit4-whack-keyboard",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "鍵盤打地鼠",
+    "desc": "地鼠舉著字牌跑出來啦！在鍵盤上找到那個鍵按下去，把地鼠打回洞裡。",
+    "skill": "鍵盤入門",
+    "cover": "🐹⌨️",
+    "color": "#f59e0b"
+  },
+  {
+    "slug": "unit5-pixel-art",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "像素藝術小畫家",
+    "desc": "一格一格塗顏色，畫出愛心、星星、小屋！或自由發揮，創作你的小作品。",
+    "skill": "數位創作",
+    "cover": "🎨🖼️",
+    "color": "#ec4899"
+  },
+  {
+    "slug": "unit6-turtle-commander",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "烏龜小指揮官",
+    "desc": "先想好要走哪邊，再按箭頭給烏龜指令。讓烏龜吃到所有胡蘿蔔！",
+    "skill": "動腦想想",
+    "cover": "🐢🥕",
+    "color": "#14b8a6"
+  },
+  {
+    "slug": "unit7-spell-commander",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "指令小法師",
+    "desc": "照怪獸頭上的順序排咒語，用滑鼠或鍵盤施法！學會「順序」和「重複」的魔法。",
+    "skill": "咒語對戰",
+    "cover": "🧙‍♂️🐉",
+    "color": "#6366f1"
+  },
+  {
+    "slug": "unit8-desktop-organizer",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "桌面整理大師",
+    "desc": "把作業、音樂、圖片拖到對的資料夾！學會分類整理，桌面再也不亂啦。",
+    "skill": "檔案整理",
+    "cover": "📁🖥️",
+    "color": "#eab308"
+  },
+  {
+    "slug": "unit9-net-detective",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "網路小警察",
+    "desc": "看三個圖，找出有沒有壞壞的！判斷好人壞人，當小偵探。",
+    "skill": "看圖判斷",
+    "cover": "🕵️🛡️",
+    "color": "#3b82f6"
+  },
+  {
+    "slug": "unit10-classifier-captain",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "分類大隊長",
+    "desc": "物品從天上掉下來啦！觀察特徵，拖到對的籃子。練習資料分類的小高手。",
+    "skill": "觀察分類",
+    "cover": "🍎🧺",
+    "color": "#92400e"
+  },
+  {
+    "slug": "unit11-space-typing-pro",
+    "grade": "中年級",
+    "gradeClass": "gmid",
+    "title": "英打太空特攻",
+    "desc": "選時間 30 秒到 20 分，打字打外星人！漸進難度從字母到句子，挑戰你的 WPM。",
+    "skill": "英打計時",
+    "cover": "🚀⌨️",
+    "color": "#6366f1"
+  },
+  {
+    "slug": "unit12-space-typing-zh",
+    "grade": "中年級",
+    "gradeClass": "gmid",
+    "title": "中打太空特攻",
+    "desc": "注音輸入打中文！選時間直接開戰，從單字到短句漸進，練速度也練字量。",
+    "skill": "中打計時",
+    "cover": "🚀🈯",
+    "color": "#ec4899"
+  },
+  {
+    "slug": "unit13-forest-typing-defense",
+    "grade": "中年級",
+    "gradeClass": "gmid",
+    "title": "極速雷射森林戰",
+    "desc": "霓虹森林裡守護小動物！注音／英打雙模式切換，雷射射擊風小一友善版。",
+    "skill": "霓虹打字",
+    "cover": "🌲⚡",
+    "color": "#10b981"
+  },
+  {
+    "slug": "unit14-magic-word-bullet",
+    "grade": "中年級",
+    "gradeClass": "gmid",
+    "title": "魔法字彈極速覺醒",
+    "desc": "魔法城堡守護戰！打英文擊落怪獸，10/2 分鐘時間模式選擇，三年級 RPG 修練。",
+    "skill": "魔法英打",
+    "cover": "🔮⚔️",
+    "color": "#a855f7"
+  },
+  {
+    "slug": "unit15-computational-thinking",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "運算思維挑戰營",
+    "desc": "小一運算思維四階段：拆解、找規則、抽象化、演算法，趣味闖關慢慢練！",
+    "skill": "運算思維",
+    "cover": "🧠✨",
+    "color": "#06b6d4"
+  },
+  {
+    "slug": "unit16-dino-typing",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "恐龍打字大冒險",
+    "desc": "騎著恐龍橫向跑酷，按出正確的字母衝過障礙，邊跑邊練打字超刺激！",
+    "skill": "打字闖關",
+    "cover": "🦕⌨️",
+    "color": "#65a30d"
+  },
+  {
+    "slug": "unit17-pet-treasure-coding",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "程式小勇士：萌寵尋寶",
+    "desc": "帶著萌寵用指令一步步尋寶，學會拆解步驟、找出規律，運算思維從這裡啟蒙！",
+    "skill": "運算思維",
+    "cover": "🐾🗺️",
+    "color": "#f97316"
+  },
+  {
+    "slug": "unit18-magic-paint",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "魔法簡約畫畫屋",
+    "desc": "用聲光畫筆自由塗鴉，邊畫邊有音效與光效，創作專屬你的魔法作品！",
+    "skill": "數位創作",
+    "cover": "🎨✨",
+    "color": "#d946ef"
+  },
+  {
+    "slug": "unit19-farm-harvest",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "快樂農場：蔬菜拔拔樂",
+    "desc": "到農場拔蘿蔔、收成蔬菜！邊玩邊練滑鼠操作和專注力，難度自己選。",
+    "skill": "手眼協調",
+    "cover": "🧑‍🌾🥕",
+    "color": "#84cc16"
+  },
+  {
+    "slug": "unit20-sock-matching",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "瘋狂襪子配對線",
+    "desc": "把一樣的襪子用線連起來！觀察規律配對，邏輯和運算思維一起練。",
+    "skill": "運算思維",
+    "cover": "🧦🔗",
+    "color": "#f43f5e"
+  },
+  {
+    "slug": "unit21-mouse-challenge",
+    "grade": "一年級",
+    "gradeClass": "g1",
+    "title": "滑鼠小勇士大冒險",
+    "desc": "點擊、拖曳、按住全套滑鼠技巧大集合，陪小勇士闖關練好基本功！",
+    "skill": "滑鼠練習",
+    "cover": "🖱️🛡️",
+    "color": "#0ea5e9"
+  }
+]
