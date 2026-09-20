@@ -1,0 +1,32 @@
+/* ⚠️ @import url() 必須排在所有規則之前（含 Tailwind），順序顛倒會被 CSS optimizer 警告並可能失效 */
+/* Noto Sans TC — 與 edtech-portfolio 一致，維持個人識別 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    'Noto Sans TC', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* 教學軌 / 技術軌 的識別色 */
+  --color-teach-500: oklch(0.72 0.16 55);
+  --color-teach-600: oklch(0.64 0.17 50);
+  --color-dev-500: oklch(0.66 0.15 245);
+  --color-dev-600: oklch(0.58 0.16 248);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  /* 中文行距放寬，長段落才好讀 */
+  line-height: 1.75;
+}
+
+/* 中英數混排時給英文/數字一點呼吸空間 */
+:lang(en) {
+  letter-spacing: 0.01em;
+}
