@@ -28,6 +28,11 @@ jobs:
 
       - name: Build Astro site
         uses: withastro/action@v6
+        env:
+          # 未帶 token 時 GitHub API 每 IP 每小時只有 60 次，Actions runner
+          # 是共用 IP 很容易撞到；帶上內建 token 拉到 5000 次。
+          # 取不到時 build 不會失敗，只會回落到 repos-snapshot.json。
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     needs: build
