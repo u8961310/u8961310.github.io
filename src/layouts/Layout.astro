@@ -5,10 +5,19 @@ import Icon from '../components/Icon.astro';
 interface Props {
   title: string;
   description?: string;
+  /** OG 圖檔名（放在 public/og/），省略則用首頁那張 */
+  ogImage?: string;
 }
 
-const { title, description = '蛋糕（Cake）的個人網站 —— 校園網路維運與 K12 資訊教育' } =
-  Astro.props;
+const {
+  title,
+  description = '蛋糕（Cake）的個人網站 —— 校園網路維運與 K12 資訊教育',
+  ogImage = 'home.png',
+} = Astro.props;
+
+// Astro.site 來自 astro.config.mjs 的 site 設定
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(`/og/${ogImage}`, Astro.site);
 
 const nav = [
   { href: '/teaching', label: '教學' },
@@ -25,11 +34,33 @@ const isActive = (href: string) => path === href || path === `${href}/`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    {/* 瀏覽器 UI 顏色跟著主題走（值要對上 global.css 的 canvas） */}
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef2f1" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0f0e" />
+
     <meta name="description" content={description} />
+
+    <meta property="og:site_name" content="蛋糕 Cake" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${title} — 預覽圖`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
     <title>{title}</title>
 
     {/* 必須在 body 繪製前就設好主題，否則會閃一下錯誤顏色（FOUC）。
