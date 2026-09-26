@@ -1,22 +1,22 @@
 [
   {
     "archived": false,
-    "description": null,
+    "description": "研習小秘書：研習公告丟給 LINE，AI 抄進 Google 日曆並提醒（Google Apps Script + Gemini）",
     "fork": false,
-    "html_url": "https://github.com/u8961310/u8961310.github.io",
-    "language": "Astro",
-    "name": "u8961310.github.io",
-    "pushedAt": "2026-09-20T11:11:14Z",
+    "html_url": "https://github.com/u8961310/training-bot",
+    "language": "JavaScript",
+    "name": "training-bot",
+    "pushedAt": "2026-09-26T01:43:58Z",
     "stars": 0
   },
   {
     "archived": false,
     "description": null,
     "fork": false,
-    "html_url": "https://github.com/u8961310/book-craw",
-    "language": "Python",
-    "name": "book-craw",
-    "pushedAt": "2026-09-14T05:35:57Z",
+    "html_url": "https://github.com/u8961310/u8961310.github.io",
+    "language": "Astro",
+    "name": "u8961310.github.io",
+    "pushedAt": "2026-09-20T11:27:49Z",
     "stars": 0
   },
   {
@@ -37,6 +37,16 @@
     "language": "JavaScript",
     "name": "fb-video-archiver",
     "pushedAt": "2026-08-02T11:11:31Z",
+    "stars": 0
+  },
+  {
+    "archived": false,
+    "description": null,
+    "fork": false,
+    "html_url": "https://github.com/u8961310/book-craw",
+    "language": "Python",
+    "name": "book-craw",
+    "pushedAt": "2026-09-21T05:38:50Z",
     "stars": 0
   },
   {
@@ -211,22 +221,22 @@
   },
   {
     "archived": false,
-    "description": "oit",
-    "fork": false,
-    "html_url": "https://github.com/u8961310/oitcourse",
-    "language": "PHP",
-    "name": "oitcourse",
-    "pushedAt": "2016-02-14T05:06:27Z",
-    "stars": 0
-  },
-  {
-    "archived": false,
     "description": "List of all countries in the world with their ISO 2 digit codes (ISO 3166-2) as CSV and JSON",
     "fork": true,
     "html_url": "https://github.com/u8961310/country-list",
     "language": null,
     "name": "country-list",
     "pushedAt": "2015-06-24T04:04:38Z",
+    "stars": 0
+  },
+  {
+    "archived": false,
+    "description": "oit",
+    "fork": false,
+    "html_url": "https://github.com/u8961310/oitcourse",
+    "language": "PHP",
+    "name": "oitcourse",
+    "pushedAt": "2016-02-14T05:06:27Z",
     "stars": 0
   },
   {
@@ -253,20 +263,20 @@
     "archived": false,
     "description": null,
     "fork": true,
-    "html_url": "https://github.com/u8961310/congress",
-    "language": null,
-    "name": "congress",
-    "pushedAt": "2014-07-20T09:40:50Z",
+    "html_url": "https://github.com/u8961310/TTU-WiFiAutoLogin",
+    "language": "Java",
+    "name": "TTU-WiFiAutoLogin",
+    "pushedAt": "2014-03-26T07:25:29Z",
     "stars": 0
   },
   {
     "archived": false,
     "description": null,
     "fork": true,
-    "html_url": "https://github.com/u8961310/TTU-WiFiAutoLogin",
-    "language": "Java",
-    "name": "TTU-WiFiAutoLogin",
-    "pushedAt": "2014-03-26T07:25:29Z",
+    "html_url": "https://github.com/u8961310/congress",
+    "language": null,
+    "name": "congress",
+    "pushedAt": "2014-07-20T09:40:50Z",
     "stars": 0
   }
 ]

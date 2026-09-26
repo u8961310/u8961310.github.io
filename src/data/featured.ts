@@ -29,6 +29,14 @@ export const FEATURED: FeaturedEntry[] = [
     liveLabel: '線上試玩',
   },
   {
+    repo: 'training-bot',
+    title: '研習小秘書 LINE bot',
+    blurb:
+      '研習公告的文字或截圖丟給 LINE，AI 抽出時間、地點、線上連結，確認後寫進 Google 日曆並提醒。Google Apps Script 全免費，附給老師的 12 步架設講義。',
+    liveUrl: 'https://u8961310.github.io/training-bot/',
+    liveLabel: '架設講義',
+  },
+  {
     repo: 'pdf-toolbox',
     title: '離線 PDF 工具箱',
     blurb: '合併 PDF、Word 轉 PDF、PDF 轉 JPG。全程本機處理，檔案不外傳。',
